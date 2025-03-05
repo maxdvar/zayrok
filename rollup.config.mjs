@@ -26,6 +26,7 @@ export default [
     ],
     plugins: [
       typescript({
+        exclude: ["**/*.stories.tsx", "**/*.stories.ts", ".storybook/**/*"],
         tsconfig: "./tsconfig.json",
       }),
       resolve(),

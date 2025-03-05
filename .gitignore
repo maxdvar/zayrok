@@ -9,3 +9,5 @@ build/
 .vscode/
 .idea/
 package-lock.json
+
+*storybook.log
