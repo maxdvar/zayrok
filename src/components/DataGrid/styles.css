@@ -1,0 +1,48 @@
+#zayrok-table {
+  border-spacing: 0px;
+}
+
+#zayrok-table-header {
+  background: #272727;
+  color: #fff;
+  text-align: left;
+}
+
+#zayrok-table-body {
+  background: #333;
+  color: #fff;
+  text-align: left;
+}
+
+.zayrok-column {
+  padding: 1rem;
+}
+
+.zayrok-cell {
+  padding: 1rem;
+  border: #555 solid 1px;
+}
+
+#first-column {
+  border: #555 solid 1px;
+  border-top-left-radius: 6px;
+  border-left: #555 solid 1px;
+  border-right: 0px;
+}
+
+#last-column {
+  border: #555 solid 1px;
+  border-left: 0px;
+  border-right: #555 solid 1px;
+  border-top-right-radius: 6px;
+}
+
+#last-row-left {
+  border: #555 solid 1px;
+  border-bottom-left-radius: 6px;
+}
+
+#last-row-right {
+  border: #555 solid 1px;
+  border-bottom-right-radius: 6px;
+}
