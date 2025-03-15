@@ -22,8 +22,11 @@ const DataGrid: React.FC<DataGridProps> = ({
             <th className="zayrok-column" id="first-column">
               <span>Columna</span>
             </th>
-            <th className="zayrok-column" id="last-column">
+            <th className="zayrok-column" id="middle-column">
               <span>Segunda Columna</span>
+            </th>
+            <th className="zayrok-column" id="last-column">
+              <span>Tercera Columna</span>
             </th>
           </tr>
         </thead>
@@ -31,13 +34,26 @@ const DataGrid: React.FC<DataGridProps> = ({
           <tr>
             <td className="zayrok-cell">Fila 1</td>
             <td className="zayrok-cell">Fila 2</td>
+            <td className="zayrok-cell" id="last-cell-right">
+              Fila 3
+            </td>
+          </tr>
+          <tr>
+            <td className="zayrok-cell">Fila 4</td>
+            <td className="zayrok-cell">Fila 5</td>
+            <td className="zayrok-cell" id="last-cell-right">
+              Fila 6
+            </td>{" "}
           </tr>
           <tr>
             <td className="zayrok-cell" id="last-row-left">
-              Fila 3
+              Fila 7
+            </td>
+            <td className="zayrok-cell" id="last-row-middle">
+              Fila 8
             </td>
             <td className="zayrok-cell" id="last-row-right">
-              Fila 4
+              Fila 9
             </td>
           </tr>
         </tbody>
