@@ -25,3 +25,7 @@ export interface DataGridProps {
   borderStyle?: borderStyle;
   borderWidth?: number;
 }
+
+export interface TableHeaderProps {
+  columns: Columns;
+}

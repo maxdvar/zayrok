@@ -1,5 +1,5 @@
-import React from "react";
-import { DataGridProps } from "./types";
+import React, { ReactNode } from "react";
+import { DataGridProps, TableHeaderProps } from "./types";
 import "./styles.css";
 
 const DataGrid: React.FC<DataGridProps> = ({
@@ -13,23 +13,33 @@ const DataGrid: React.FC<DataGridProps> = ({
   density,
   borderStyle,
   borderWidth,
-}) => {
+}): ReactNode => {
+  const TableHeader = ({ columns }: TableHeaderProps): ReactNode => {
+    return (
+      <thead id="zayrok-table-header">
+        {columns.map((column, index) => (
+          <th
+            key={index}
+            className="zayrok-column"
+            id={
+              index === 0
+                ? "first-column"
+                : index === columns.length - 1
+                ? "last-column"
+                : "middle-column"
+            }
+          >
+            <span>{column.header}</span>
+          </th>
+        ))}
+      </thead>
+    );
+  };
+
   return (
     <React.Fragment>
       <table id="zayrok-table">
-        <thead id="zayrok-table-header">
-          <tr>
-            <th className="zayrok-column" id="first-column">
-              <span>Columna</span>
-            </th>
-            <th className="zayrok-column" id="middle-column">
-              <span>Segunda Columna</span>
-            </th>
-            <th className="zayrok-column" id="last-column">
-              <span>Tercera Columna</span>
-            </th>
-          </tr>
-        </thead>
+        <TableHeader columns={columns} />
         <tbody id="zayrok-table-body">
           <tr>
             <td className="zayrok-cell">Fila 1</td>
