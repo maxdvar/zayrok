@@ -29,3 +29,7 @@ export interface DataGridProps {
 export interface TableHeaderProps {
   columns: Columns;
 }
+
+export interface TableBodyProps {
+  rows: Rows;
+}

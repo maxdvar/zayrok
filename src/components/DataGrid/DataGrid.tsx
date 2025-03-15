@@ -1,18 +1,18 @@
 import React, { ReactNode } from "react";
-import { DataGridProps, TableHeaderProps } from "./types";
+import { DataGridProps, TableBodyProps, TableHeaderProps } from "./types";
 import "./styles.css";
 
 const DataGrid: React.FC<DataGridProps> = ({
   rows,
   columns,
-  theme,
-  onSort,
-  pagination,
-  enableSelection,
-  onSelectionChange,
-  density,
-  borderStyle,
-  borderWidth,
+  // theme,
+  // onSort,
+  // pagination,
+  // enableSelection,
+  // onSelectionChange,
+  // density,
+  // borderStyle,
+  // borderWidth,
 }): ReactNode => {
   const TableHeader = ({ columns }: TableHeaderProps): ReactNode => {
     return (
@@ -36,37 +36,42 @@ const DataGrid: React.FC<DataGridProps> = ({
     );
   };
 
+  const TableBody = ({ rows }: TableBodyProps): ReactNode => {
+    return (
+      <tbody id="zayrok-table-body">
+        {rows.map((row, rowIndex) => (
+          <tr key={rowIndex}>
+            {row.cells.map((cell, index) => (
+              <td
+                key={index}
+                className="zayrok-cell"
+                id={
+                  rowIndex === rows.length - 1 && index === 0
+                    ? "last-row-left"
+                    : rowIndex === rows.length - 1 &&
+                      index === row.cells.length - 1
+                    ? "last-row-right"
+                    : rowIndex === rows.length - 1
+                    ? "last-row-middle"
+                    : index === row.cells.length - 1
+                    ? "last-cell-right"
+                    : ""
+                }
+              >
+                <span>{cell.field}</span>
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    );
+  };
+
   return (
     <React.Fragment>
       <table id="zayrok-table">
         <TableHeader columns={columns} />
-        <tbody id="zayrok-table-body">
-          <tr>
-            <td className="zayrok-cell">Fila 1</td>
-            <td className="zayrok-cell">Fila 2</td>
-            <td className="zayrok-cell" id="last-cell-right">
-              Fila 3
-            </td>
-          </tr>
-          <tr>
-            <td className="zayrok-cell">Fila 4</td>
-            <td className="zayrok-cell">Fila 5</td>
-            <td className="zayrok-cell" id="last-cell-right">
-              Fila 6
-            </td>{" "}
-          </tr>
-          <tr>
-            <td className="zayrok-cell" id="last-row-left">
-              Fila 7
-            </td>
-            <td className="zayrok-cell" id="last-row-middle">
-              Fila 8
-            </td>
-            <td className="zayrok-cell" id="last-row-right">
-              Fila 9
-            </td>
-          </tr>
-        </tbody>
+        <TableBody rows={rows} />
       </table>
     </React.Fragment>
   );
