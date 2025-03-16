@@ -1,10 +1,14 @@
 {
-  "name": "@dmaximovarela/zayrok",
+  "name": "zayrok",
   "version": "0.0.1",
-  "description": "Data Grid Library",
+  "description": "A simple and lightweight Data Grid library for React.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "dev": "rollup -c --watch",
     "build": "rollup -c",
@@ -14,18 +18,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DMaximoVarela/zayrok.git"
+    "url": "https://github.com/maxdvar/zayrok.git"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
-  "keywords": [],
-  "author": "DMaximoVarela",
+  "keywords": [
+    "data-grid",
+    "react",
+    "table",
+    "grid",
+    "datatable",
+    "react-table",
+    "react-grid"
+  ],
+  "author": "maxdvar",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DMaximoVarela/zayrok/issues"
+    "url": "https://github.com/maxdvar/zayrok/issues"
   },
-  "homepage": "https://github.com/DMaximoVarela/zayrok#readme",
+  "homepage": "https://github.com/maxdvar/zayrok#readme",
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.5",
     "@eslint/js": "^9.18.0",
@@ -46,15 +55,17 @@
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-storybook": "^0.11.4",
     "playwright": "^1.50.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-postcss": "^4.0.2",
     "storybook": "^8.6.4",
-    "tslib": "^2.8.1",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.20.0",
-    "vitest": "^3.0.7"
+    "vitest": "^3.0.7",
+    "tslib": "^2.8.1"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "dependencies": {
     "globals": "^16.0.0"
