@@ -13,10 +13,17 @@ interface Pagination {
   onChange: () => void;
 }
 
+interface CustomTheme {
+  headerBackground: string;
+  bodyBackground: string;
+  fontColor: string;
+}
+
 export interface DataGridProps {
   rows: Rows;
   columns: Columns;
   theme?: Theme;
+  customTheme?: CustomTheme;
   onSort?: () => void;
   pagination?: Pagination;
   enableSelection?: boolean;

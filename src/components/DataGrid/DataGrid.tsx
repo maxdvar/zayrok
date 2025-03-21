@@ -5,7 +5,8 @@ import "./styles.css";
 const DataGrid: React.FC<DataGridProps> = ({
   rows,
   columns,
-  // theme,
+  theme = "dark",
+  customTheme,
   // onSort,
   // pagination,
   // enableSelection,
@@ -14,9 +15,56 @@ const DataGrid: React.FC<DataGridProps> = ({
   // borderStyle,
   // borderWidth,
 }): ReactNode => {
+  if (theme === "transparent" && !customTheme) {
+    customTheme = {
+      headerBackground: "#272727",
+      bodyBackground: "#333",
+      fontColor: "#fff",
+    };
+  }
+
+  const styles = {
+    headerBackground:
+      theme === "light"
+        ? "#ccc"
+        : theme === "dark"
+        ? "#272727"
+        : theme === "transparent"
+        ? "#0000009f"
+        : theme === "custom"
+        ? customTheme?.headerBackground
+        : "#272727",
+    bodyBackground:
+      theme === "light"
+        ? "#e8e8e8"
+        : theme === "dark"
+        ? "#333"
+        : theme === "transparent"
+        ? "#0000008c"
+        : theme === "custom"
+        ? customTheme?.bodyBackground
+        : "#333",
+    fontColor:
+      theme === "light"
+        ? "#000"
+        : theme === "dark"
+        ? "#fff"
+        : theme === "transparent"
+        ? "#fff"
+        : theme === "custom"
+        ? customTheme?.fontColor
+        : "#fff",
+  };
+
   const TableHeader = ({ columns }: TableHeaderProps): ReactNode => {
     return (
-      <thead id="zayrok-table-header">
+      <thead
+        id="zayrok-table-header"
+        style={{
+          backgroundColor: styles.headerBackground,
+          color: styles.fontColor,
+        }}
+      >
         {columns.map((column, index) => (
           <th
             key={index}
@@ -38,7 +86,13 @@ const DataGrid: React.FC<DataGridProps> = ({
 
   const TableBody = ({ rows }: TableBodyProps): ReactNode => {
     return (
-      <tbody id="zayrok-table-body">
+      <tbody
+        id="zayrok-table-body"
+        style={{
+          backgroundColor: styles.bodyBackground,
+          color: styles.fontColor,
+        }}
+      >
         {rows.map((row, rowIndex) => (
           <tr key={rowIndex}>
             {row.cells.map((cell, index) => (

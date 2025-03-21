@@ -3,14 +3,10 @@
 }
 
 #zayrok-table-header {
-  background: #272727;
-  color: #fff;
   text-align: left;
 }
 
 #zayrok-table-body {
-  background: #333;
-  color: #fff;
   text-align: left;
 }
 
@@ -20,53 +16,53 @@
 
 .zayrok-cell {
   padding: 1rem;
-  border: #555 solid 2px;
+  border: rgb(85, 85, 85, 0.5) solid 2px;
   border-bottom: 0px;
   border-right: 0px;
 }
 
 #first-column {
-  border: #555 solid 2px;
+  border: rgb(85, 85, 85, 0.5) solid 2px;
   border-top-left-radius: 6px;
-  border-left: #555 solid 2px;
+  border-left: rgb(85, 85, 85, 0.5) solid 2px;
   border-right: 0px;
   border-bottom: 0px;
 }
 
 #last-column {
-  border: #555 solid 2px;
+  border: rgb(85, 85, 85, 0.5) solid 2px;
   border-left: 0px;
-  border-right: #555 solid 2px;
+  border-right: rgb(85, 85, 85, 0.5) solid 2px;
   border-top-right-radius: 6px;
   border-bottom: 0px;
 }
 
 #middle-column {
-  border: #555 solid 2px;
+  border: rgb(85, 85, 85, 0.5) solid 2px;
   border-left: 0px;
   border-right: 0px;
   border-bottom: 0px;
 }
 
 #last-row-left {
-  border: #555 solid 2px;
+  border: rgb(85, 85, 85, 0.5) solid 2px;
   border-bottom-left-radius: 6px;
   border-right: 0px;
 }
 
 #last-row-right {
-  border: #555 solid 2px;
+  border: rgb(85, 85, 85, 0.5) solid 2px;
   border-bottom-right-radius: 6px;
 }
 
 #last-row-middle {
   padding: 1rem;
-  border: #555 solid 2px;
+  border: rgb(85, 85, 85, 0.5) solid 2px;
   border-right: 0px;
 }
 
 #last-cell-right {
   padding: 1rem;
-  border: #555 solid 2px;
+  border: rgb(85, 85, 85, 0.5) solid 2px;
   border-bottom: 0px;
 }
