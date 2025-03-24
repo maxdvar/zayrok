@@ -169,9 +169,54 @@ const primaryRows: Rows = [
   },
 ];
 
+const basicColumns = [
+  { field: "name", header: "Name", sortable: false },
+  { field: "email", header: "Email", sortable: false },
+];
+
+const basicRows: Rows = [
+  {
+    rowId: 1,
+    cells: [
+      {
+        field: "User 1",
+        type: "text",
+        label: "user",
+      },
+      {
+        field: "user1@example.com",
+        type: "text",
+        label: "user",
+      },
+    ],
+  },
+  {
+    rowId: 2,
+    cells: [
+      {
+        field: "User 2",
+        type: "text",
+        label: "user",
+      },
+      {
+        field: "user2@example.com",
+        type: "text",
+        label: "user",
+      },
+    ],
+  },
+];
+
 export const Primary: Story = {
   args: {
     columns: primaryColumns,
     rows: primaryRows,
+  },
+};
+
+export const Basic: Story = {
+  args: {
+    columns: basicColumns,
+    rows: basicRows,
   },
 };

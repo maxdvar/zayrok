@@ -42,6 +42,16 @@ const DataGrid: React.FC<DataGridProps> = ({
   const styles = themeStyles[theme] || themeStyles.dark;
 
   const TableHeader = ({ columns }: TableHeaderProps): ReactNode => {
+    const getColId = (columnsLength: number, index: number) => {
+      if (index === 0 && columnsLength === 1) {
+        return "single-column";
+      }
+
+      if (index === 0 && columnsLength > 1) return "first-column";
+      if (index === columnsLength - 1) return "last-column";
+      return "middle-column";
+    };
+
     return (
       <thead
         id="zayrok-table-header"
@@ -54,13 +64,7 @@ const DataGrid: React.FC<DataGridProps> = ({
           <th
             key={index}
             className="zayrok-column"
-            id={
-              index === 0
-                ? "first-column"
-                : index === columns.length - 1
-                ? "last-column"
-                : "middle-column"
-            }
+            id={getColId(columns?.length, index)}
           >
             <span>{column.header}</span>
           </th>
@@ -70,6 +74,26 @@ const DataGrid: React.FC<DataGridProps> = ({
   };
 
   const TableBody = ({ rows }: TableBodyProps): ReactNode => {
+    const getRowId = (
+      rowsLength: number,
+      cellsLength: number,
+      rowIndex: number,
+      cellIndex: number
+    ) => {
+      if (rowIndex === rowsLength - 1 && cellIndex === 0 && cellsLength === 1)
+        return "single-cell";
+      if (rowIndex === rowsLength - 1 && cellIndex === 0)
+        return "last-row-left";
+      if (rowIndex === rowsLength - 1 && cellIndex === cellsLength - 1)
+        return "last-row-right";
+      if (rowIndex === rowsLength - 1) return "last-row-middle";
+      if (cellIndex === cellsLength && cellsLength === 1)
+        return "single-last-cell";
+      if (cellIndex === cellsLength) return "last-cell-right";
+
+      return "";
+    };
+
     return (
       <tbody
         id="zayrok-table-body"
@@ -85,18 +109,7 @@ const DataGrid: React.FC<DataGridProps> = ({
                 <td
                   key={index}
                   className="zayrok-cell"
-                  id={
-                    rowIndex === rows.length - 1 && index === 0
-                      ? "last-row-left"
-                      : rowIndex === rows.length - 1 &&
-                        index === row.cells.length - 1
-                      ? "last-row-right"
-                      : rowIndex === rows.length - 1
-                      ? "last-row-middle"
-                      : index === row.cells.length - 1
-                      ? "last-cell-right"
-                      : ""
-                  }
+                  id={getRowId(rows.length, row.cells.length, rowIndex, index)}
                 >
                   <span style={{ color: styles.fontColor }}>{cell.field}</span>
                 </td>
