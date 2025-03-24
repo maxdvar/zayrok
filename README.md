@@ -2,6 +2,17 @@
 
 A simple and lightweight Data Grid library for React.
 
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Props](#props)
+- [Themes](#themes)
+- [Running Storybook](#running-storybook)
+- [Changelog](#changelog)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Installation
 
 ```sh
@@ -31,7 +42,14 @@ const rows = [
 ];
 
 const App = () => {
-  return <DataGrid columns={columns} rows={rows} />;
+  return (
+    <DataGrid
+      columns={columns}
+      rows={rows}
+      theme="dark"
+      emptyLabel="No records found"
+    />
+  );
 };
 
 export default App;
@@ -39,10 +57,43 @@ export default App;
 
 ## Props
 
-| Prop    | Type     | Required | Description                |
-| ------- | -------- | -------- | -------------------------- |
-| columns | Column[] | Yes      | Defines the table columns. |
-| rows    | Rows[]   | Yes      | Defines the table rows.    |
+| Prop        | Type                                             | Required | Description                                                     |
+| ----------- | ------------------------------------------------ | -------- | --------------------------------------------------------------- |
+| columns     | `Column[]`                                       | Yes      | Defines the table columns.                                      |
+| rows        | `Row[]`                                          | Yes      | Defines the table rows.                                         |
+| theme       | `"transparent" \| "light" \| "dark" \| "custom"` | No       | Defines the theme of the table. Default: `dark`.                |
+| customTheme | `CustomTheme`                                    | No       | Allows custom styling when `theme="custom"`.                    |
+| emptyLabel  | `string`                                         | No       | Message to display when the table is empty. Default: "No Data". |
+
+## Themes
+
+Zayrok now supports theming with the `theme` prop:
+
+```tsx
+<DataGrid columns={columns} rows={rows} theme="dark" />
+```
+
+Available themes:
+
+- `transparent`
+- `light`
+- `dark` (default)
+- `custom` (requires `customTheme` prop)
+
+Example of a custom theme:
+
+```tsx
+<DataGrid
+  columns={columns}
+  rows={rows}
+  theme="custom"
+  customTheme={{
+    headerBackground: "#333",
+    bodyBackground: "#222",
+    fontColor: "#fff",
+  }}
+/>
+```
 
 ## Running Storybook
 
@@ -57,6 +108,15 @@ or
 ```sh
 yarn storybook
 ```
+
+## Changelog
+
+### v0.0.2
+
+- Added `theme` prop with predefined themes (`transparent`, `light`, `dark`, `custom`).
+- Added `customTheme` prop for full customization when `theme="custom"`.
+- Added `emptyLabel` prop to customize the message when the table is empty (default: "No Data").
+- Fixed various styling issues.
 
 ## Contributing
 
