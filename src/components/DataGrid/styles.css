@@ -21,6 +21,14 @@
   border-right: 0px;
 }
 
+.zayrok-empty-label {
+  padding: 1rem;
+  text-align: center;
+  border: rgb(85, 85, 85, 0.5) solid 2px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
 #first-column {
   border: rgb(85, 85, 85, 0.5) solid 2px;
   border-top-left-radius: 6px;

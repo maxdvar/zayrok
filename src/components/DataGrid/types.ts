@@ -24,6 +24,7 @@ export interface DataGridProps {
   columns: Columns;
   theme?: Theme;
   customTheme?: CustomTheme;
+  emptyLabel?: string;
   onSort?: () => void;
   pagination?: Pagination;
   enableSelection?: boolean;

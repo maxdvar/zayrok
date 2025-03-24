@@ -7,6 +7,7 @@ const DataGrid: React.FC<DataGridProps> = ({
   columns,
   theme = "dark",
   customTheme,
+  emptyLabel = "No Data Available",
   // onSort,
   // pagination,
   // enableSelection,
@@ -15,46 +16,30 @@ const DataGrid: React.FC<DataGridProps> = ({
   // borderStyle,
   // borderWidth,
 }): ReactNode => {
-  if (theme === "transparent" && !customTheme) {
-    customTheme = {
+  const themeStyles = {
+    light: {
+      headerBackground: "#ccc",
+      bodyBackground: "#e8e8e8",
+      fontColor: "#000",
+    },
+    dark: {
       headerBackground: "#272727",
       bodyBackground: "#333",
       fontColor: "#fff",
-    };
-  }
-
-  const styles = {
-    headerBackground:
-      theme === "light"
-        ? "#ccc"
-        : theme === "dark"
-        ? "#272727"
-        : theme === "transparent"
-        ? "#0000009f"
-        : theme === "custom"
-        ? customTheme?.headerBackground
-        : "#272727",
-    bodyBackground:
-      theme === "light"
-        ? "#e8e8e8"
-        : theme === "dark"
-        ? "#333"
-        : theme === "transparent"
-        ? "#0000008c"
-        : theme === "custom"
-        ? customTheme?.bodyBackground
-        : "#333",
-    fontColor:
-      theme === "light"
-        ? "#000"
-        : theme === "dark"
-        ? "#fff"
-        : theme === "transparent"
-        ? "#fff"
-        : theme === "custom"
-        ? customTheme?.fontColor
-        : "#fff",
+    },
+    transparent: {
+      headerBackground: "#0000009f",
+      bodyBackground: "#0000008c",
+      fontColor: "#fff",
+    },
+    custom: {
+      headerBackground: customTheme?.headerBackground || "#272727",
+      bodyBackground: customTheme?.bodyBackground || "#333",
+      fontColor: customTheme?.fontColor || "#fff",
+    },
   };
+
+  const styles = themeStyles[theme] || themeStyles.dark;
 
   const TableHeader = ({ columns }: TableHeaderProps): ReactNode => {
     return (
@@ -93,30 +78,42 @@ const DataGrid: React.FC<DataGridProps> = ({
           color: styles.fontColor,
         }}
       >
-        {rows.map((row, rowIndex) => (
-          <tr key={rowIndex}>
-            {row.cells.map((cell, index) => (
-              <td
-                key={index}
-                className="zayrok-cell"
-                id={
-                  rowIndex === rows.length - 1 && index === 0
-                    ? "last-row-left"
-                    : rowIndex === rows.length - 1 &&
-                      index === row.cells.length - 1
-                    ? "last-row-right"
-                    : rowIndex === rows.length - 1
-                    ? "last-row-middle"
-                    : index === row.cells.length - 1
-                    ? "last-cell-right"
-                    : ""
-                }
-              >
-                <span>{cell.field}</span>
-              </td>
-            ))}
+        {rows?.length > 0 ? (
+          rows.map((row, rowIndex) => (
+            <tr key={rowIndex}>
+              {row.cells.map((cell, index) => (
+                <td
+                  key={index}
+                  className="zayrok-cell"
+                  id={
+                    rowIndex === rows.length - 1 && index === 0
+                      ? "last-row-left"
+                      : rowIndex === rows.length - 1 &&
+                        index === row.cells.length - 1
+                      ? "last-row-right"
+                      : rowIndex === rows.length - 1
+                      ? "last-row-middle"
+                      : index === row.cells.length - 1
+                      ? "last-cell-right"
+                      : ""
+                  }
+                >
+                  <span style={{ color: styles.fontColor }}>{cell.field}</span>
+                </td>
+              ))}
+            </tr>
+          ))
+        ) : (
+          <tr>
+            <td
+              colSpan={columns.length}
+              style={{ color: styles.fontColor }}
+              className="zayrok-empty-label"
+            >
+              <span>{emptyLabel}</span>
+            </td>
           </tr>
-        ))}
+        )}
       </tbody>
     );
   };
