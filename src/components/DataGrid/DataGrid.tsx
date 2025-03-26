@@ -87,9 +87,9 @@ const DataGrid: React.FC<DataGridProps> = ({
       if (rowIndex === rowsLength - 1 && cellIndex === cellsLength - 1)
         return "last-row-right";
       if (rowIndex === rowsLength - 1) return "last-row-middle";
-      if (cellIndex === cellsLength && cellsLength === 1)
+      if (cellIndex === cellsLength - 1 && cellsLength === 1)
         return "single-last-cell";
-      if (cellIndex === cellsLength) return "last-cell-right";
+      if (cellIndex === cellsLength - 1) return "last-cell-right";
 
       return "";
     };
