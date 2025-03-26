@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { DataGridProps, TableBodyProps, TableHeaderProps } from "./types";
 import "./styles.css";
+import TextCell from "../TextCell";
 
 const DataGrid: React.FC<DataGridProps> = ({
   rows,
@@ -108,10 +109,18 @@ const DataGrid: React.FC<DataGridProps> = ({
               {row.cells.map((cell, index) => (
                 <td
                   key={index}
+                  colSpan={index}
                   className="zayrok-cell"
                   id={getRowId(rows.length, row.cells.length, rowIndex, index)}
+                  style={{ color: styles.fontColor }}
                 >
-                  <span style={{ color: styles.fontColor }}>{cell.field}</span>
+                  {cell.type === "text" && (
+                    <TextCell
+                      type="text"
+                      field={cell.field}
+                      label={cell.label}
+                    />
+                  )}
                 </td>
               ))}
             </tr>

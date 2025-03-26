@@ -22,9 +22,10 @@ interface BaseCell {
   label?: string;
 }
 
-interface TextCell extends BaseCell {
+export interface TextCell extends BaseCell {
   type: "text";
   field?: string;
+  label?: string;
 }
 
 interface NumberCell extends BaseCell {
